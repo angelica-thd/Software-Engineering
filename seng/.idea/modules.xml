@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/seng.iml" filepath="$PROJECT_DIR$/seng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/seng1.iml" filepath="$PROJECT_DIR$/src/seng1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlet/servlet.iml" filepath="$PROJECT_DIR$/servlet/servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlets/servlets.iml" filepath="$PROJECT_DIR$/servlets/servlets.iml" />
     </modules>
   </component>
 </project>
