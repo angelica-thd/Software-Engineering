@@ -25,11 +25,6 @@ public class StudentUtil extends HttpServlet {
         writer.println("<title>UniPi-CS: Bcs Thesis Status</title>");
         writer.println("</head>");
         writer.println("<body>");
-        writer.println("<style>") ;
-        writer.println("body { font-family: Calibri; font-size: 18;}");
-        writer.println("table, th, td { border: 1px solid black; border-collapse: collapse; padding: 15px; text-align: left;}" );
-        writer.println("</style>");
-        writer.println("<img src='${pageContext.request.contextPath}/unipi.jpg'  style='width: 430px; height: 150px;'>");
         writer.println("<table>");
         writer.println("<tr><td><b>Supervisor's Fullname</b></td>");
         writer.println("<td><b>Supervisor's E-mail</b></td>");

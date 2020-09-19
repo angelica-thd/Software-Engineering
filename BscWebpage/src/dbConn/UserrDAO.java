@@ -40,4 +40,19 @@ public class UserrDAO {
             return null;
         }
     }
+
+    public static ResultSet GetSuperReport(String am){
+        ResultSet resultSet;
+        con = ConnectionProvider.getCon();
+        try{
+            stmt = con.prepareStatement("select students.fullname,students.email,orientation,bsc_thesis,start_date,prog_languages,tools,progress,grade from students inner join supervisors on students.supervisor = supervisors.id where students.am = ?");
+            stmt.setString(1,am);
+            resultSet = stmt.executeQuery();
+            con.close();
+            return resultSet;
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

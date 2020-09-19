@@ -26,14 +26,6 @@ public class SupReport extends HttpServlet {
         writer.println("<title>UniPi-CS: Bcs Thesis Status</title>");
         writer.println("</head>");
         writer.println("<body>");
-        writer.println("<style>") ;
-        writer.println("body { font-family: Calibri; font-size: 18;}");
-        writer.println("table, th, td { border: 1px solid black; border-collapse: collapse; padding: 15px; text-align: left;}" );
-        writer.println("button {background-color: #FFFFFF; color: #000000; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer}");
-        writer.println("button:hover {opacity: 0.8;}");
-        writer.println("</style>");
-        writer.println("<img src="+request.getContextPath()+"'/unipi.jpg'  style='width: 430px; height: 150px;'>");
-        writer.println("<br><br><br><br>");
         writer.println("<table>");
         writer.println("<tr><td><b>AM</b></td>");
         writer.println("<td><b>Fullname</b></td>");
@@ -46,7 +38,7 @@ public class SupReport extends HttpServlet {
         try {
             while (rs.next()) {
                 request.setAttribute("am",rs.getString("am"));
-                writer.println("<tr><td><form method = 'post' action = 'stuDetails.jsp'><input type='submit'  value ="+ rs.getString("am")+ "></form></td>");
+                writer.println("<tr><td><form method = 'post' action = 'stuDetails.jsp'><input type='submit' name= 'am' value ="+ rs.getString("am")+ "></form></td>");
                 writer.println("<td>" + rs.getString("fullname") + "</td>");
                 writer.println("<td>" + rs.getString("email") + "</td>");
                 writer.println("<td>" + rs.getString("orientation") + "</td>");
@@ -60,7 +52,6 @@ public class SupReport extends HttpServlet {
             e.printStackTrace();
         }
         writer.println("</table>");
-        writer.println(request.getAttribute("am"));
         writer.println("</body>");
         writer.println("</html>");
 

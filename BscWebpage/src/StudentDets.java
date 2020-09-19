@@ -15,9 +15,9 @@ public class StudentDets extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        String am = (String) request.getAttribute("am");
+        String am = (String) request.getParameter("am");
         PrintWriter writer = response.getWriter();
-        ResultSet rs = UserrDAO.GetStudentsWork(am);
+        ResultSet rs = UserrDAO.GetSuperReport(am);
 
         writer.println("<!DOCTYPE html><html>");
         writer.println("<head>");
@@ -25,12 +25,6 @@ public class StudentDets extends HttpServlet {
         writer.println("<title>UniPi-CS: Bcs Thesis Status: Student's Details</title>");
         writer.println("</head>");
         writer.println("<body>");
-        writer.println("<style>") ;
-        writer.println("body { font-family: Calibri; font-size: 18;}");
-        writer.println("table, th, td { border: 1px solid black; border-collapse: collapse; padding: 15px; text-align: left;}" );
-        writer.println("</style>");
-        writer.println("<img src="+request.getContextPath()+"'/unipi.jpg'  style='width: 430px; height: 150px;'>");
-        writer.println("<br><br><br><br>");
         writer.println("<h1>Student "+am+" </h1>");
         writer.println("<table>");
         writer.println("<tr><td><b>Fullname</b></td>");
@@ -50,15 +44,15 @@ public class StudentDets extends HttpServlet {
                 writer.println("<td>" + rs.getString("start_date") + "</td>");
                 writer.println("<td>" + rs.getString("prog_languages") + "</td>");
                 writer.println("<td>" + rs.getString("tools") + "</td>");
-                if(request.getParameter("btn1")!=null){ writer.println("<td>"+rs.getString("progress")+"</td></tr>");}
+                if(request.getParameter("btn1")!=null){
+                    System.out.println(request.getParameter("btn1"));
+                    writer.println("<td>"+rs.getString("progress")+"</td></tr>");}
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
 
-        writer.println("<button type = 'submit' name ='btn1' value = 'Show detailed progress' = >Show detailed progress</button><br> ");
-        writer.println("<button type = 'submit' name ='btn2' value = 'Arrange meeting' >Arrange meeting </button><br> ");
-        writer.println("<button type = 'submit' name ='btn3' value = 'Submit final grade' >Submit final grade</button> ");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

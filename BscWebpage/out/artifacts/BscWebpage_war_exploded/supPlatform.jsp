@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:forward page="/SupReport" />
+
 <html>
 <head>
     <title>UniPi-CS: Bcs Thesis Status</title>
@@ -14,7 +14,7 @@
 
 <style>
     body { font-family: Calibri; font-size: 18;}
-
+    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 15px; text-align: left;}
     /* Full-width input fields */
     input[type=text], input[type=password] {
         width: 100%;
@@ -43,10 +43,7 @@
 </style>
 <img src="${pageContext.request.contextPath}/unipi.jpg"  style="width: 430px; height: 150px;">
 </head>
-<form method = "post" action = "${pageContext.request.contextPath}/SupReport">
-    <button type = 'submit' value = 'Show my Students' >Show my Students</button>
-</form>
-
+<jsp:include page="/SupReport" />
 <form action="index.jsp">
     <button type='submit' value='Logout'>Logout</button>
 </form>
