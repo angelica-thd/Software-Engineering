@@ -37,7 +37,7 @@
 
     /* Extra styles for the cancel button */
   </style>
-    <form method ="post" action = "/context-path/LoginCheck">
+    <form method ="post" action="/LoginServlet">
       <table>
 
             <td>Supervisor's ID </td>
