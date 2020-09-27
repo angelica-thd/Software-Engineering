@@ -22,10 +22,13 @@ public class StudentUtil extends HttpServlet {
         writer.println("<!DOCTYPE html><html>");
         writer.println("<head>");
         writer.println("<meta charset=\"UTF-8\" />");
+        writer.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">");
         writer.println("<title>UniPi-CS: Bcs Thesis Status</title>");
         writer.println("</head>");
         writer.println("<body>");
-        writer.println("<table>");
+        writer.println("<div class =\"w3-container\">");
+        writer.println("<table class = \"w3-table w3-bordered\">");
         writer.println("<tr><td><b>Supervisor's Fullname</b></td>");
         writer.println("<td><b>Supervisor's E-mail</b></td>");
         writer.println("<td><b>Bachelor Thesis</b></td>");
@@ -50,6 +53,7 @@ public class StudentUtil extends HttpServlet {
             e.printStackTrace();
         }
         writer.println("</table>");
+        writer.println("</div>");
         writer.println("</body>");
         writer.println("</html>");
 

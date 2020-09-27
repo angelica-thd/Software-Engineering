@@ -1,12 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: ageli
-  Date: 10-Sep-20
-  Time: 12:22 PM
+  Date: 27-Sep-20
+  Time: 6:40 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>UniPi-CS: Bcs Thesis Status</title>
@@ -44,7 +43,7 @@
 <img src="${pageContext.request.contextPath}/unipi.jpg"  style="width: 430px; height: 150px;">
 </head>
 
-<jsp:include page="/SupReport" />
+<jsp:include page="/GradeSubmission" ></jsp:include>
 <br>
 <form action="index.jsp">
     <button type='submit' value='Logout'>Logout</button>

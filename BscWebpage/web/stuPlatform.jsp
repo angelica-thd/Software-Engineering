@@ -13,8 +13,8 @@
 <body>
 
 <style>
-    body { font-family: Calibri; font-size: 18;}
-    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 15px; text-align: left;}
+    body { font-family: Calibri;}
+    table,th,td { border: 0px; padding: 0px;}
     /* Full-width input fields */
     input[type=text], input[type=password] {
         width: 100%;
@@ -27,7 +27,7 @@
     }
 
     /* Set a style for all buttons */
-    button {
+    .button {
         background-color: #05125c;
         color: white;
         padding: 14px 20px;
@@ -44,8 +44,31 @@
 <img src="${pageContext.request.contextPath}/unipi.jpg"  style="width: 430px; height: 150px;"><br><br>
 </head>
 <jsp:include page="/StudentUtil" />
-<form action="index.jsp">
-    <button type='submit' value='Logout'>Logout</button>
-</form>
+<script>
+    function upload() {
+        document.getElementById("file").hidden = false;
+        document.getElementById("upl").hidden = false;
+    }
+</script>
+<table>
+    <tr>
+        <td>
+            <input type='submit' class='button' value='Meetings' class= 'button' /><br>
+        </td>
+        <td></td>
+        <td>
+            <input type = 'submit' class= 'button' value = 'Upload work' onclick="upload()">
+            <input type="file" id = 'file' class= 'button' value="Browse" accept=".zip" hidden>
+            <input type="submit" id = 'upl' class= 'button' value="Submit" hidden>
+            </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="index.jsp">
+                <input type='submit' class = 'button' value='Logout'>
+            </form>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import dbConn.UserrDAO;
+import mainPkg.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,16 +18,24 @@ public class SupReport extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
+        User user = new User(id,request.getParameter("password"));
+        int status = user.login();
+        String fullname = user.getFullname();
         PrintWriter writer = response.getWriter();
         ResultSet rs = UserrDAO.GetAllStudentInfo(id);
 
         writer.println("<!DOCTYPE html><html>");
         writer.println("<head>");
         writer.println("<meta charset=\"UTF-8\" />");
+        writer.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">");
         writer.println("<title>UniPi-CS: Bcs Thesis Status</title>");
         writer.println("</head>");
+        writer.println("<h1 style = 'font-family: Calibri; '>Hello Professor "+fullname+".</h1>");
         writer.println("<body>");
-        writer.println("<table>");
+        writer.println("<style> font-size: 18px; </style>");
+        writer.println("<div class =\"w3-container\">");
+        writer.println("<table class=\"w3-table w3-bordered\">");
         writer.println("<tr><td><b>AM</b></td>");
         writer.println("<td><b>Fullname</b></td>");
         writer.println("<td><b>E-mail</b></td>");
@@ -45,13 +54,15 @@ public class SupReport extends HttpServlet {
                 writer.println("<td>" + rs.getString("bsc_thesis") + "</td>");
                 writer.println("<td>" + rs.getString("start_date") + "</td>");
                 writer.println("<td>" + rs.getString("prog_languages") + "</td>");
-                writer.println("<td>" + rs.getString("tools") + "</td>");
+                writer.println("<td>" + rs.getString("tools") + "</td></tr>");
 
                       }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        writer.println("<tr></tr>");
         writer.println("</table>");
+        writer.println("</div>");
         writer.println("</body>");
         writer.println("</html>");
 

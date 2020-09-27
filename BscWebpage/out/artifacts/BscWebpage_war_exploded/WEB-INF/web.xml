@@ -43,4 +43,15 @@
         <servlet-name>StudentDets</servlet-name>
         <url-pattern>/StudentDets</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GradeSubmission</servlet-name>
+        <servlet-class>GradeSubmission</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GradeSubmission</servlet-name>
+        <url-pattern>/GradeSubmission</url-pattern>
+    </servlet-mapping>
+
 </web-app>

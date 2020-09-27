@@ -13,7 +13,7 @@
 </head>
 <body>
 <style>
-    body { font-family: Calibri; font-size: 18;}
+    body { font-family: Calibri; }
 
     /* Full-width input fields */
     input[type=text], input[type=password] {

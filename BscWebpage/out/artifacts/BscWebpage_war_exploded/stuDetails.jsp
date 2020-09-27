@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>UniPi-CS: Bcs Thesis Status: Student's Details</title>
-<body>
+  <body>
 <style>
-    body { font-family: Calibri; font-size: 18;}
-    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 15px; text-align: left;}
+    body { font-family: Calibri; }
+    table,th,td { border: 0px; padding: 0px;}
     .button {
         background-color: #05125c;
         color: white;
@@ -28,13 +28,53 @@
 </style>
 <img src="${pageContext.request.contextPath}/unipi.jpg"  style="width: 430px; height: 150px;"><br>
 </head>
+<jsp:include page="/StudentDets"></jsp:include>
 
-<input type = 'submit' name ='btn1' class= 'button' value = 'Show detailed progress' ><br>
-<input type = 'submit' name ='btn2' class= 'button' value = 'Arrange meeting' ><br>
-<input type = 'submit' name ='btn3' class= 'button' value = 'Submit final grade' ><br>
-<form action="index.jsp">
-    <input type='submit' class = 'button' value='Logout'>
-</form>
-<jsp:include page="/StudentDets" />
+<script>
+    function meeting(){
+        document.getElementById("meeting").hidden = false;
+        document.getElementById("label").hidden = false; }
+    function finalGrd() {
+        document.getElementById("grade").hidden = true;
+        document.getElementById("changeGrade").hidden = false;
+        document.getElementById("changeBtn").hidden = true;
+        document.getElementById("submitBtn").hidden = false;}
+
+
+</script>
+    <table>
+    <br>
+    <tr>
+        <td>
+            <input type='submit' value='Arrange meeting' class= 'button' onclick="meeting()"/><br>
+        </td>
+        <td></td>
+        <td>
+            <input type = 'submit' class= 'button' id = 'changeBtn' value = 'Change grade' onclick="finalGrd()">
+            <form method="post" action="submission.jsp" >
+                <input type='submit' class='button' onclick="" id = 'submitBtn' value = 'Submit grade' hidden>
+            </form>
+        </td>
+
+      </tr>
+        <div id = "date"></div>
+        <tr>
+            <td>
+                <label id = "label" for="date" hidden>Meeting on date: </label>
+            </td>
+            <td></td>
+            <td>
+                <input type='date' id = 'meeting'  hidden/>
+            </td>
+        </tr>
+        </div>
+    <tr>
+         <td>
+            <form action="index.jsp">
+                <input type='submit' class = 'button' value='Logout'>
+            </form>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

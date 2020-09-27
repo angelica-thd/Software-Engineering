@@ -15,7 +15,7 @@ public class UserrDAO {
         ResultSet resultSet;
         con = ConnectionProvider.getCon();
         try{
-            stmt = con.prepareStatement("select am,students.fullname,students.email,orientation,bsc_thesis,start_date,prog_languages,tools,progress from students inner join supervisors on students.supervisor = supervisors.id where supervisor= ?");
+            stmt = con.prepareStatement("select supervisors.fullname as sfullname,am,students.fullname,students.email,orientation,bsc_thesis,start_date,prog_languages,tools,progress from students inner join supervisors on students.supervisor = supervisors.id where supervisor= ?");
             stmt.setString(1,id);
             resultSet = stmt.executeQuery();
             con.close();
@@ -40,8 +40,7 @@ public class UserrDAO {
             return null;
         }
     }
-
-    public static ResultSet GetSuperReport(String am){
+       public static ResultSet GetSuperReport(String am){
         ResultSet resultSet;
         con = ConnectionProvider.getCon();
         try{
