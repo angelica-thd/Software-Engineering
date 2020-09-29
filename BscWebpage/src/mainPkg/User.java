@@ -78,22 +78,6 @@ public class User {
         return 0;
     }
 
-    public void submitGrade(double grade,String am){
-        Connection con;
-        PreparedStatement stmt;
-        con = ConnectionProvider.getCon();
-        try{
-            stmt = con.prepareStatement("update students set grade = ? where am = ?");
-            stmt.setDouble(1,grade);
-            stmt.setString(2,am);
-            stmt.executeQuery();
-            System.out.println("grade submitted");
-            con.close();
-        } catch (SQLException e){
-            e.printStackTrace();
-            System.out.println("grade not submitted");
-            return;
-        }
-    }
+
 
 }

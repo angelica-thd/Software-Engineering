@@ -1,3 +1,4 @@
+import dbConn.UserrDAO;
 import mainPkg.User;
 
 import javax.servlet.ServletException;
@@ -8,18 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "GradeSubmission")
+@WebServlet("/GradeSubmission")
 public class GradeSubmission extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String am = (String) request.getAttribute("am");
-        System.out.println("am"+am);
-        System.out.println(request.getParameter("id"));
-        double grade = Double.parseDouble(request.getParameter("changeGrade"));
-        System.out.println(grade);
-        User user = new User(am,request.getParameter("password"));
-        user.submitGrade(grade,am);
+        String am = (String) request.getParameter("am");
+        String grade = (String) request.getParameter("newGrade");
+        double newGrade = Double.parseDouble(grade);
+        UserrDAO.submitGrade(newGrade,am);
         PrintWriter writer = response.getWriter();
-        writer.print("<script>alert('Success');window.history.back();</script>");
+        if (UserrDAO.submitGrade(newGrade,am) == 1){ writer.print("<script>alert('Grade submitted successfully!');window.history.back();</script>");}
+        else { writer.print("<script>alert('Error in grade submission...');window.history.back();</script>");}
 
 
     }

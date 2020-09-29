@@ -1,4 +1,7 @@
-<%--
+<%@ page import="mainPkg.User" %>
+<%@ page import="javax.script.ScriptEngine" %>
+<%@ page import="javax.script.ScriptEngineManager" %>
+<%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: ageli
   Date: 12-Sep-20
@@ -28,35 +31,37 @@
 </style>
 <img src="${pageContext.request.contextPath}/unipi.jpg"  style="width: 430px; height: 150px;"><br>
 </head>
+
 <jsp:include page="/StudentDets"></jsp:include>
 
 <script>
     function meeting(){
         document.getElementById("meeting").hidden = false;
-        document.getElementById("label").hidden = false; }
+        document.getElementById("label").hidden = false;
+        document.getElementById("parameterAM").value = document.getElementById("am").innerHTML;
+    }
     function finalGrd() {
+        document.createElement("changeGrade");
         document.getElementById("grade").hidden = true;
         document.getElementById("changeGrade").hidden = false;
         document.getElementById("changeBtn").hidden = true;
-        document.getElementById("submitBtn").hidden = false;}
-
-
+        document.getElementById("submitBtn").hidden = false;
+        document.getElementById("parameterAM").value = document.getElementById("am").innerHTML;
+         }
 </script>
+
     <table>
     <br>
-    <tr>
-        <td>
-            <input type='submit' value='Arrange meeting' class= 'button' onclick="meeting()"/><br>
-        </td>
+       <tr>
+        <td> <input type='submit' value='Arrange meeting' class= 'button' onclick="meeting()"/> </td>
         <td></td>
-        <td>
-            <input type = 'submit' class= 'button' id = 'changeBtn' value = 'Change grade' onclick="finalGrd()">
-            <form method="post" action="submission.jsp" >
-                <input type='submit' class='button' onclick="" id = 'submitBtn' value = 'Submit grade' hidden>
-            </form>
-        </td>
-
-      </tr>
+         <td><input type = 'submit' class= 'button' id = 'changeBtn' value = 'Change grade' onclick="finalGrd()"></td>
+               <form method="post" action="${pageContext.request.contextPath}/GradeSubmission">
+                   <td><input type='submit' class='button' id = 'submitBtn'  value = 'Submit grade' hidden></td>
+                   <td><input type="text" name = "am" id = 'parameterAM'  hidden ></td>
+                   <td><input type = 'number' min = '0' max = '10' name = 'newGrade' id = 'changeGrade' hidden></td>
+               </form>
+       </tr>
         <div id = "date"></div>
         <tr>
             <td>
@@ -69,6 +74,7 @@
         </tr>
         </div>
     <tr>
+</form>
          <td>
             <form action="index.jsp">
                 <input type='submit' class = 'button' value='Logout'>
@@ -76,5 +82,6 @@
         </td>
     </tr>
 </table>
+
 </body>
 </html>

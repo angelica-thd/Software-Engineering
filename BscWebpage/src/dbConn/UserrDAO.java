@@ -54,4 +54,25 @@ public class UserrDAO {
             return null;
         }
     }
+
+    public static int submitGrade(double grade,String am){
+        Connection con;
+        PreparedStatement stmt;
+        con = ConnectionProvider.getCon();
+        try{
+            stmt = con.prepareStatement("update students set grade = ? where am = ?;");
+            stmt.setDouble(1,grade);
+            stmt.setString(2,am);
+            stmt.executeUpdate();
+            System.out.println("Grade submitted.");
+
+            con.close();
+            return 1;
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Grade not Submitted.");
+            return 0;
+        }
+    }
+
 }

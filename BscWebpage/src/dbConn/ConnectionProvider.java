@@ -8,6 +8,7 @@ public class ConnectionProvider implements Provider{
         try{
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(connURL,username,password);
+            con.setAutoCommit(true);
             System.out.println("Connection established.");
 
         }catch (Exception e){

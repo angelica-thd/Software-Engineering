@@ -1,6 +1,8 @@
 import dbConn.UserrDAO;
+import mainPkg.User;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,7 @@ public class StudentDets extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         String am = (String) request.getParameter("am");
+        User user = new User(am,request.getParameter("password"));
         PrintWriter writer = response.getWriter();
         ResultSet rs = UserrDAO.GetSuperReport(am);
 
@@ -29,7 +32,7 @@ public class StudentDets extends HttpServlet {
         writer.println("</head>");
         writer.println("<body>");
         writer.println("<style>  body { font-family: Calibri; } </style>");
-        writer.println("<h1 name = 'am' style = 'font-family:Calibri;' >Student "+am+" </h1>");
+        writer.println("<h1 id = 'am' style = 'font-family:Calibri;'>"+am+" </h1>");
         writer.println("<div class =\"w3-container\">");
         writer.println("<table class = \"w3-table w3-bordered\">");
         writer.println("<tr><td><b>Fullname</b></td>");
@@ -52,7 +55,7 @@ public class StudentDets extends HttpServlet {
                 writer.println("<td>" + rs.getString("prog_languages") + "</td>");
                 writer.println("<td>" + rs.getString("tools") + "</td>");
                 writer.println("<td>" + rs.getString("progress") + "</td>");
-                writer.println("<td><input type = 'number' min = '0' max = '10' id = 'changeGrade' hidden> <p id= 'grade'>"+ rs.getString("grade") + "</p></td></tr>");
+                writer.println("<td><form><p id= 'grade'>"+ rs.getString("grade") + "</p></form></td></tr>");
 
             }
 
@@ -64,12 +67,12 @@ public class StudentDets extends HttpServlet {
         writer.println("</body>");
         writer.println("</html>");
 
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher(request.getContextPath()+ "/GradeSubmission");
         rd.forward(request,response);
+        System.out.println(request.getParameter("changeGrade"));
     }
 
 

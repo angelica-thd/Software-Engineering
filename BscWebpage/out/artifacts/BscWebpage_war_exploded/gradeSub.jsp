@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: ageli
-  Date: 27-Sep-20
-  Time: 6:40 PM
+  Date: 28-Sep-20
+  Time: 4:43 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,7 +13,6 @@
 
 <style>
     body { font-family: Calibri;}
-
     /* Full-width input fields */
     input[type=text], input[type=password] {
         width: 100%;
@@ -22,9 +21,7 @@
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
-
     }
-
     /* Set a style for all buttons */
     button {
         background-color: #05125c;
@@ -34,16 +31,14 @@
         border: none;
         cursor: pointer
     }
-
     button:hover {
         opacity: 0.8;
     }
-
 </style>
 <img src="${pageContext.request.contextPath}/unipi.jpg"  style="width: 430px; height: 150px;">
 </head>
 
-<jsp:include page="/GradeSubmission" ></jsp:include>
+<jsp:forward page="/GradeSubmission" ></jsp:forward>
 <br>
 <form action="index.jsp">
     <button type='submit' value='Logout'>Logout</button>
