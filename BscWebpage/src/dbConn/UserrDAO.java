@@ -75,4 +75,23 @@ public class UserrDAO {
         }
     }
 
+    public static int ArrangeMeeting(String meeting,String am){
+        Connection con;
+        PreparedStatement stmt;
+        con = ConnectionProvider.getCon();
+        try{
+            stmt = con.prepareStatement("update students set meeting = ? where am = ?;");
+            stmt.setString(1, meeting);
+            stmt.setString(2,am);
+            stmt.executeUpdate();
+            System.out.println("Meeting submitted.");
+            con.close();
+            return 1;
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Meeting not Submitted.");
+            return 0;
+        }
+    }
+
 }

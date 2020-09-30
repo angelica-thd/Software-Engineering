@@ -38,7 +38,9 @@
     function meeting(){
         document.getElementById("meeting").hidden = false;
         document.getElementById("label").hidden = false;
-        document.getElementById("parameterAM").value = document.getElementById("am").innerHTML;
+        document.getElementById("meeting").hidden = false;
+        document.getElementById("ok").hidden = false;
+        document.getElementById("am2").value=document.getElementById("am").innerHTML;
     }
     function finalGrd() {
         document.createElement("changeGrade");
@@ -62,19 +64,21 @@
                    <td><input type = 'number' min = '0' max = '10' name = 'newGrade' id = 'changeGrade' hidden></td>
                </form>
        </tr>
-        <div id = "date"></div>
-        <tr>
-            <td>
-                <label id = "label" for="date" hidden>Meeting on date: </label>
+        <div >
+            <tr><td>
+                <label id = "label" hidden>Meeting on date: </label>
             </td>
-            <td></td>
-            <td>
-                <input type='date' id = 'meeting'  hidden/>
-            </td>
-        </tr>
+                <td></td>
+                <td><form method="POST" action="${pageContext.request.contextPath}/Meetings" enctype="multipart/form-data">
+                    <input type='date' id="meeting" name =  "meeting" hidden/>
+                    <input type='text' id="am2" name =  "am2" hidden/>
+                </td>
+                <td>
+                    <input id ="ok" type="submit" value="submit" hidden/>
+                </td>
+                </form>
+            </tr>
         </div>
-    <tr>
-</form>
          <td>
             <form action="index.jsp">
                 <input type='submit' class = 'button' value='Logout'>

@@ -56,16 +56,18 @@
             <input type='submit' class='button' value='Meetings' class= 'button' /><br>
         </td>
         <td></td>
-        <td>
-            <input type = 'submit' class= 'button' value = 'Upload work' onclick="upload()">
-            <input type="file" id = 'file' class= 'button' value="Browse" accept=".zip" hidden>
-            <input type="submit" id = 'upl' class= 'button' value="Submit" hidden>
-            </td>
+
     </tr>
     <tr>
         <td>
             <form action="index.jsp">
                 <input type='submit' class = 'button' value='Logout'>
+            </form>
+        <td>
+            <td>
+            <form method="POST" action="${pageContext.request.contextPath}/UploadServlet" enctype="multipart/form-data">
+                <input type='file' class = 'button' accept=".zip" name="file"/>
+                <input type="submit" class = 'button' value="upload"/>
             </form>
         </td>
     </tr>
