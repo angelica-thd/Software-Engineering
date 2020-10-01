@@ -7,20 +7,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Supervisor extends User {
-    public Supervisor(){
-        super();
-    }
-   public Supervisor(String id, String password){
-       super(id,password);
-   }
+public class Report extends Supervisor {
 
-       public static ResultSet GetAllStudentInfo(String id){
+    String am;
+    public Report(String am){
+        super();
+        this.am = am;
+    }
+
+    public static ResultSet GetSuperReport(String am){
         ResultSet resultSet;
         con = ConnectionProvider.getCon();
         try{
-            stmt = con.prepareStatement("select supervisors.fullname as sfullname,am,students.fullname,students.email,orientation,bsc_thesis from students inner join supervisors on students.supervisor = supervisors.id where supervisor= ?");
-            stmt.setString(1,id);
+            stmt = con.prepareStatement("select students.fullname,students.email,orientation,bsc_thesis,start_date,prog_languages,tools,progress,meeting,grade from students inner join supervisors on students.supervisor = supervisors.id where students.am = ?");
+            stmt.setString(1,am);
             resultSet = stmt.executeQuery();
             con.close();
             return resultSet;
@@ -30,8 +30,4 @@ public class Supervisor extends User {
         }
     }
 
-
-
 }
-
-

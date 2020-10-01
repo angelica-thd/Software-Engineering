@@ -6,21 +6,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @WebServlet(name = "UploadServlet")
+@MultipartConfig
 public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset+UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+         try (PrintWriter out = response.getWriter()) {
             Part part = request.getPart("file");
             String fileName = getSubmittedFileName(part);
             String path = getServletContext().getRealPath("/" + "files" + File.separator + fileName);
             InputStream is = part.getInputStream();
             boolean succs =uploadFile(is,path);
             if(succs){
-                out.println("File Uploaded to this Directory" +path);
+                out.println("<script>alert('File Uploaded to this Directory' " +path+");window.history.back();</script>");
             }else{
-                out.println("error");
+                out.println("<script>alert('Error in uploading the file...');window.history.back();</script>");
             }
         }
     }

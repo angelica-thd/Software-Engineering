@@ -1,4 +1,6 @@
-import dbConn.UserrDAO;
+
+import mainPkg.Meeting;
+import mainPkg.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +21,9 @@ public class Meetings extends HttpServlet {
             String am = (String) request.getParameter("am2");
             String meeting = (String) request.getParameter("meeting");
             out.println(am + meeting);
-            UserrDAO.ArrangeMeeting(meeting, am);
-            if (UserrDAO.ArrangeMeeting(meeting,am) == 1){ out.print("<script>alert('Meeting arranged successfully!');window.history.back();</script>");}
+            Meeting meet = new Meeting(meeting);
+            int res = meet.ArrangeMeeting(meeting, am);
+            if (res == 1){ out.print("<script>alert('Meeting arranged successfully!');window.history.back();</script>");}
             else { out.print("<script>alert('Error in meeting arrangement...');window.history.back();</script>");}
 
         } catch (Exception e) {

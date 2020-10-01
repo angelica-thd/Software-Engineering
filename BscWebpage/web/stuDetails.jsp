@@ -35,6 +35,7 @@
 <jsp:include page="/StudentDets"></jsp:include>
 
 <script>
+
     function meeting(){
         document.getElementById("meeting").hidden = false;
         document.getElementById("label").hidden = false;
@@ -70,11 +71,11 @@
             </td>
                 <td></td>
                 <td><form method="POST" action="${pageContext.request.contextPath}/Meetings" enctype="multipart/form-data">
-                    <input type='date' id="meeting" name =  "meeting" hidden/>
+                    <input type='date' id="meeting" name =  "meeting" min = "2020-10-01" hidden/>
                     <input type='text' id="am2" name =  "am2" hidden/>
                 </td>
                 <td>
-                    <input id ="ok" type="submit" value="submit" hidden/>
+                    <input id ="ok" class = 'button' type="submit" value="submit" hidden/>
                 </td>
                 </form>
             </tr>

@@ -48,28 +48,27 @@
     function upload() {
         document.getElementById("file").hidden = false;
         document.getElementById("upl").hidden = false;
+        document.getElementById("parameterAM").hidden = true;
+        document.getElementById("parameterAM").value = document.getElementById("am").innerHTML;
     }
 </script>
 <table>
     <tr>
-        <td>
-            <input type='submit' class='button' value='Meetings' class= 'button' /><br>
-        </td>
-        <td></td>
+        <td><input type="submit" class="button" value="Upload my Work" onclick="upload()"></td>
+         <td>
+            <form method="POST" action="${pageContext.request.contextPath}/UploadServlet" enctype="multipart/form-data">
+        <td>  <input type="submit" id = 'upl' class = 'button' value="Submit" hidden/></td>
+        <td>  <input type='file' id = 'file' class = 'button' accept=".zip" name="file" hidden/> </td>
+        <td>  <input type="text" name = "am" id = 'parameterAM'  hidden/></td>
 
-    </tr>
+            </form>
+        </td>
+     </tr>
     <tr>
         <td>
             <form action="index.jsp">
                 <input type='submit' class = 'button' value='Logout'>
             </form>
-        <td>
-            <td>
-            <form method="POST" action="${pageContext.request.contextPath}/UploadServlet" enctype="multipart/form-data">
-                <input type='file' class = 'button' accept=".zip" name="file"/>
-                <input type="submit" class = 'button' value="upload"/>
-            </form>
-        </td>
     </tr>
 </table>
 </body>
