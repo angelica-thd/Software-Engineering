@@ -18,12 +18,11 @@ public class Meetings extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try{
-            String am = (String) request.getParameter("am2");
+            String am = (String) request.getParameter("am");
             String meeting = (String) request.getParameter("meeting");
-            out.println(am + meeting);
-            Meeting meet = new Meeting(meeting);
-            int res = meet.ArrangeMeeting(meeting, am);
-            if (res == 1){ out.print("<script>alert('Meeting arranged successfully!');window.history.back();</script>");}
+            Meeting meeting1 = new Meeting(meeting);
+            meeting1.ArrangeMeeting(meeting ,am);
+            if (meeting1.ArrangeMeeting(meeting,am) == 1){ out.print("<script>alert('Meeting arranged successfully!');window.history.back();</script>");}
             else { out.print("<script>alert('Error in meeting arrangement...');window.history.back();</script>");}
 
         } catch (Exception e) {

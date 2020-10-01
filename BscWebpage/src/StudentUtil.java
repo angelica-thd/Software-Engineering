@@ -30,7 +30,7 @@ public class StudentUtil extends HttpServlet {
         writer.println("<body>");
         writer.println("<div class =\"w3-container\">");
         writer.println("<table class = \"w3-table w3-bordered\">");
-        writer.println("<h1 id = 'am' style = 'font-family:Calibri;'>"+am+" </h1>");
+        writer.println("<h1 id = 'am' style = 'font-family:Calibri;'>"+am+"</h1>");
         writer.println("<tr><td><b>Supervisor's Fullname</b></td>");
         writer.println("<td><b>Supervisor's E-mail</b></td>");
         writer.println("<td><b>Bachelor Thesis</b></td>");
@@ -49,7 +49,7 @@ public class StudentUtil extends HttpServlet {
                 writer.println("<td>" + rs.getString("prog_languages") + "</td>");
                 writer.println("<td>" + rs.getString("tools") + "</td>");
                 writer.println("<td>" + rs.getString("progress") + "</td>");
-                if(rs.getString("meeting")!= null){ writer.println("<td>" + rs.getString("meeting") + "</td>");}
+                if(rs.getString("meeting")!= "-"){ writer.println("<td>" + rs.getString("meeting") + "</td>");}
                 else{  writer.println("<td> None </td>");}
                 writer.println("<td>" + rs.getString("grade") + "</td></tr>");
 

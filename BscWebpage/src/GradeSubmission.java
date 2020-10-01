@@ -16,11 +16,10 @@ public class GradeSubmission extends HttpServlet {
         String am = (String) request.getParameter("am");
         String grade = (String) request.getParameter("newGrade");
         double newGrade = Double.parseDouble(grade);
-
         Grade g = new Grade(newGrade,am);
-        int res = g.submitGrade(newGrade,am);
+        g.submitGrade(newGrade,am);
         PrintWriter writer = response.getWriter();
-        if (res == 1){ writer.print("<script>alert('Grade submitted successfully!');window.history.back();</script>");}
+        if (g.submitGrade(newGrade,am) == 1){ writer.print("<script>alert('Grade submitted successfully!');window.history.back();</script>");}
         else { writer.print("<script>alert('Error in grade submission...');window.history.back();</script>");}
 
 

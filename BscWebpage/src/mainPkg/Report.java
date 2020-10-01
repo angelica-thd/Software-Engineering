@@ -19,7 +19,7 @@ public class Report extends Supervisor {
         ResultSet resultSet;
         con = ConnectionProvider.getCon();
         try{
-            stmt = con.prepareStatement("select students.fullname,students.email,orientation,bsc_thesis,start_date,prog_languages,tools,progress,meeting,grade from students inner join supervisors on students.supervisor = supervisors.id where students.am = ?");
+            stmt = con.prepareStatement("select students.fullname,students.email,orientation,bsc_thesis,start_date,prog_languages,tools,progress,meeting,project,grade from students inner join supervisors on students.supervisor = supervisors.id where students.am = ?");
             stmt.setString(1,am);
             resultSet = stmt.executeQuery();
             con.close();

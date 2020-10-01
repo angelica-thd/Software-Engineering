@@ -51,15 +51,22 @@
         document.getElementById("parameterAM").hidden = true;
         document.getElementById("parameterAM").value = document.getElementById("am").innerHTML;
     }
+    function click(){
+        document.getElementById("id").value = document.getElementById("id").innerHTML;
+    }
 </script>
 <table>
     <tr>
+        <td>
+            <input type='submit' class='button' value='Meetings' class= 'button' /><br>
+        </td>
+        <td></td>
         <td><input type="submit" class="button" value="Upload my Work" onclick="upload()"></td>
          <td>
             <form method="POST" action="${pageContext.request.contextPath}/UploadServlet" enctype="multipart/form-data">
         <td>  <input type="submit" id = 'upl' class = 'button' value="Submit" hidden/></td>
-        <td>  <input type='file' id = 'file' class = 'button' accept=".zip" name="file" hidden/> </td>
-        <td>  <input type="text" name = "am" id = 'parameterAM'  hidden/></td>
+        <td>  <input type='file' id = 'file' class = 'button' accept=".zip" name="file" onclick="click()" hidden/> </td>
+        <td>  <input type="text" name = "id" id = 'id'  hidden/></td>
 
             </form>
         </td>

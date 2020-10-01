@@ -1,3 +1,5 @@
+import mainPkg.Student;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +18,17 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
+        Student student = new Student();
          try (PrintWriter out = response.getWriter()) {
             Part part = request.getPart("file");
+            String id =(String)request.getParameter("id");
             String fileName = getSubmittedFileName(part);
             String path = getServletContext().getRealPath("/" + "files" + File.separator + fileName);
             InputStream is = part.getInputStream();
             boolean succs =uploadFile(is,path);
             if(succs){
                 out.println("<script>alert('File Uploaded to this Directory' " +path+");window.history.back();</script>");
+                student.Prog(id);
             }else{
                 out.println("<script>alert('Error in uploading the file...');window.history.back();</script>");
             }

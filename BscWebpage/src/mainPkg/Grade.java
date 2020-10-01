@@ -17,7 +17,7 @@ public class Grade extends Report{
     public static int submitGrade(double grade,String am){
         con = ConnectionProvider.getCon();
         try{
-            stmt = con.prepareStatement("update students set grade = ? where am = ?;");
+            stmt = con.prepareStatement("update students set grade = ? where am = ?");
             stmt.setDouble(1,grade);
             stmt.setString(2,am);
             stmt.executeUpdate();

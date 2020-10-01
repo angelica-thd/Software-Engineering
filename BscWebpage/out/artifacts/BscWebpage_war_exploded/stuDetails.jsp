@@ -39,9 +39,8 @@
     function meeting(){
         document.getElementById("meeting").hidden = false;
         document.getElementById("label").hidden = false;
-        document.getElementById("meeting").hidden = false;
         document.getElementById("ok").hidden = false;
-        document.getElementById("am2").value=document.getElementById("am").innerHTML;
+        document.getElementById("parAM").value=document.getElementById("am").innerHTML;
     }
     function finalGrd() {
         document.createElement("changeGrade");
@@ -61,8 +60,8 @@
          <td><input type = 'submit' class= 'button' id = 'changeBtn' value = 'Change grade' onclick="finalGrd()"></td>
                <form method="post" action="${pageContext.request.contextPath}/GradeSubmission">
                    <td><input type='submit' class='button' id = 'submitBtn'  value = 'Submit grade' hidden></td>
-                   <td><input type="text" name = "am" id = 'parameterAM'  hidden ></td>
                    <td><input type = 'number' min = '0' max = '10' name = 'newGrade' id = 'changeGrade' hidden></td>
+                   <input type='text' id="parameterAM" name =  "am" hidden/>
                </form>
        </tr>
         <div >
@@ -70,16 +69,23 @@
                 <label id = "label" hidden>Meeting on date: </label>
             </td>
                 <td></td>
-                <td><form method="POST" action="${pageContext.request.contextPath}/Meetings" enctype="multipart/form-data">
-                    <input type='date' id="meeting" name =  "meeting" min = "2020-10-01" hidden/>
-                    <input type='text' id="am2" name =  "am2" hidden/>
-                </td>
                 <td>
-                    <input id ="ok" class = 'button' type="submit" value="submit" hidden/>
-                </td>
+                <form method="post" action="${pageContext.request.contextPath}/Meetings">
+                    <input type='date' id="meeting" name =  "meeting" min = "2020-10-01" hidden/>
+                    <input id ="ok" class = 'button' type="submit" value="Submit" hidden/>
+                    <input type='text' id="parAM" name =  "am" hidden/>
+
                 </form>
+                </td>
             </tr>
         </div>
+        <tr>
+            <td>
+            <form method="post" action="${pageContext.request.contextPath}/DownloadServlet">
+            <input type='submit' class='button'  value = 'Download Work' >
+            </form>
+        </td>
+        </tr>
          <td>
             <form action="index.jsp">
                 <input type='submit' class = 'button' value='Logout'>
