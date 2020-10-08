@@ -79,13 +79,7 @@
                 </td>
             </tr>
         </div>
-        <tr>
-            <td>
-            <form method="post" action="${pageContext.request.contextPath}/DownloadServlet">
-            <input type='submit' class='button'  value = 'Download Work' >
-            </form>
-        </td>
-        </tr>
+
          <td>
             <form action="index.jsp">
                 <input type='submit' class = 'button' value='Logout'>

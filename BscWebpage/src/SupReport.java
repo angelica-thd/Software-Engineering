@@ -20,10 +20,12 @@ public class SupReport extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         Supervisor supervisor = new Supervisor(id,request.getParameter("password"));
+        Student student = new Student();
         int status = supervisor.login();
         String fullname = supervisor.getFullname();
         PrintWriter writer = response.getWriter();
         ResultSet rs = supervisor.GetAllStudentInfo(id);
+        ResultSet rs2 = student.ShowDates();
 
         writer.println("<!DOCTYPE html><html>");
         writer.println("<head>");
@@ -56,6 +58,19 @@ public class SupReport extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        writer.println("<td><b></b></td></tr>");
+        writer.println("<td><b>Your Scheduled Appointments</b></td></tr>");
+        try {
+            while (rs2.next()) {
+                writer.println("<td>" + rs2.getString("am") + "</td>");
+                writer.println("<td>" + rs2.getString("fullname") + "</td>");
+                writer.println("<td>" + rs2.getString("meeting") + "</td></tr>");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         writer.println("<tr></tr>");
         writer.println("</table>");
         writer.println("</div>");
